@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +7,7 @@ using Discord;
 using Discord.Commands;
 using TabletBot.Common;
 using TabletBot.Common.Store;
+using TabletBot.Discord.Commands.Attributes;
 
 namespace TabletBot.Discord.Commands
 {
@@ -73,7 +73,7 @@ namespace TabletBot.Discord.Commands
             }
         }
 
-        [Command(SET_SNIPPET, RunMode = RunMode.Async), Name("Create snippet"), RequireUserPermission(GuildPermission.ManageGuild)]
+        [Command(SET_SNIPPET, RunMode = RunMode.Async), Name("Create snippet"), RequireUserRole(HelperRole, ModeratorRole)]
         public async Task SetSnippet(string prefix, string title, [Remainder] string content)
         {
             await Context.Message?.DeleteAsync();
@@ -94,7 +94,7 @@ namespace TabletBot.Discord.Commands
             await ReplyAsync(embed: GetSnippetEmbed(snippet).Build());
         }
 
-        [Command(REMOVE_SNIPPET, RunMode = RunMode.Async), Name("Delete snippet"), RequireUserPermission(GuildPermission.ManageGuild)]
+        [Command(REMOVE_SNIPPET, RunMode = RunMode.Async), Name("Delete snippet"), RequireUserRole(HelperRole, ModeratorRole)]
         public async Task RemoveSnippet(string prefix)
         {
             await Context.Message?.DeleteAsync();

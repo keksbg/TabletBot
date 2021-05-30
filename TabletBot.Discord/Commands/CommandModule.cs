@@ -6,6 +6,10 @@ namespace TabletBot.Discord.Commands
 {
     public class CommandModule : ModuleBase
     {
+        public const ulong BotRole = 615621006844887054;
+        public const ulong ModeratorRole = 644180151755735060;
+        public const ulong HelperRole = 723418791991705631;
+
         protected const string ITALIC_AFFIX = "*";
         protected const string BOLD_AFFIX = "**";
         protected const string UNDERLINE_AFFIX = "__";
